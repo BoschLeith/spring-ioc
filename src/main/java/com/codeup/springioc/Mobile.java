@@ -1,17 +1,16 @@
 package com.codeup.springioc;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class Mobile {
 	public static void main(String[] args) {
 
-		// Class Reference
-		TMobile tMobile = new TMobile();
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		System.out.println("config loaded");
+		Sim tMobile = context.getBean("tMobile", Sim.class);
 		tMobile.calling();
 		tMobile.data();
-
-		// Interface Reference
-		Sim sim = new Verizon();
-		sim.calling();
-		sim.data();
 
 	}
 }
